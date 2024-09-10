@@ -73,7 +73,7 @@
             font-size: 1.1rem;
             line-height: 1.6;
         }
-        .skills, .projects, .role {
+        .skills, .projects, .role, .experience {
             background-color: #fff;
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -118,6 +118,32 @@
             margin-top: 5px;
             border-radius: 4px;
         }
+        .company {
+            margin-bottom: 1rem;
+        }
+        .company h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .company p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+        .company strong {
+            font-weight: bold;
+        }
+        .read-more-content {
+            display: none;
+        }
+        .read-more-btn {
+            color: #007bff;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
         a {
             color: #007bff;
             text-decoration: none;
@@ -135,6 +161,18 @@
                 content.style.display = "none";
             }
         }
+
+        function toggleReadMore(id, btn) {
+            var content = document.getElementById(id);
+            var button = document.getElementById(btn);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "inline";
+                button.innerHTML = "Read Less";
+            } else {
+                content.style.display = "none";
+                button.innerHTML = "Read More";
+            }
+        }
     </script>
 </head>
 <body>
@@ -144,14 +182,14 @@
         <h1>Mahesh Mori</h1>
         <p>Mobile App Developer | Android & iOS Specialist</p>
         <div class="contact-info">
-            <p>Email: <a href="iosdev.mahesh@gmail.com">iosdev.mahesh@gmail.com</a> | 
+            <p>Email: <a href="mailto:iosdev.mahesh@gmail.com">iosdev.mahesh@gmail.com</a> | 
             LinkedIn: <a href="https://www.linkedin.com/in/morimahesh/" target="_blank">Mahesh Mori</a></p>
         </div>
     </header>
 
     <!-- About Section with Profile Picture -->
     <section class="about">
-        <img src="https://media.licdn.com/dms/image/v2/C4E03AQERt639Ak_c9A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1622868391327?e=1731542400&v=beta&t=Dtd5w01J0fraCDoANmiUE6qwKgmgaOR9fS0w3CtWTVA" alt="Profile Picture"> <!-- Replace with your own image URL -->
+        <img src="https://via.placeholder.com/150" alt="Profile Picture"> <!-- Replace with your own image URL -->
         <div>
             <h2>About Me</h2>
             <p>Hello! I'm Mahesh Mori, a passionate mobile app developer with expertise in building Android and iOS applications using the latest technologies like React Native, Flutter, and native Android (Java/Kotlin) and iOS (Swift). I have experience in delivering end-to-end solutions for clients and improving user experiences through thoughtful design and efficient code.</p>
@@ -171,50 +209,69 @@
         </ul>
     </section>
 
-    <!-- Role Section -->
-    <section class="role">
-        <h2>Role</h2>
-        <p>As a mobile app developer, I focus on creating responsive, efficient, and high-quality mobile applications. I specialize in app architecture design, feature implementation, and delivering intuitive user experiences through agile methodologies.</p>
+    <!-- Work Experience Section -->
+    <section class="experience">
+        <h2>Work Experience</h2>
+
+        <div class="company">
+            <h3>Company A</h3>
+            <p><strong>Position:</strong> Senior Mobile Developer</p>
+            <p><strong>Duration:</strong> Jan 2021 - Present</p>
+            <p><strong>Description:</strong> Leading a team of developers to build and maintain mobile applications for clients in e-commerce and healthcare sectors. I am responsible for feature implementation, code reviews, and integrating third-party APIs. 
+                <span class="read-more-content" id="readMoreCompanyA">
+                    I worked closely with product teams to ensure timely delivery of project milestones while maintaining high-quality standards. My role also involved mentoring junior developers and conducting code reviews to improve code quality across the team.
+                </span>
+                <span class="read-more-btn" id="readMoreBtnCompanyA" onclick="toggleReadMore('readMoreCompanyA', 'readMoreBtnCompanyA')">Read More</span>
+            </p>
+        </div>
+
+        <div class="company">
+            <h3>Company B</h3>
+            <p><strong>Position:</strong> Mobile App Developer</p>
+            <p><strong>Duration:</strong> Mar 2018 - Dec 2020</p>
+            <p><strong>Description:</strong> Developed native Android and iOS applications, focusing on performance optimization, implementing new features, and maintaining existing codebases.
+                <span class="read-more-content" id="readMoreCompanyB">
+                    I collaborated with UI/UX designers to create user-friendly interfaces and worked on integrating third-party APIs and services into mobile applications.
+                </span>
+                <span class="read-more-btn" id="readMoreBtnCompanyB" onclick="toggleReadMore('readMoreCompanyB', 'readMoreBtnCompanyB')">Read More</span>
+            </p>
+        </div>
+
+        <div class="company">
+            <h3>Company C</h3>
+            <p><strong>Position:</strong> Junior Mobile Developer</p>
+            <p><strong>Duration:</strong> Jan 2016 - Feb 2018</p>
+            <p><strong>Description:</strong> Assisted in building mobile applications for startups and small businesses, focusing on implementing new features and debugging existing code.
+                <span class="read-more-content" id="readMoreCompanyC">
+                    Gained experience in the full mobile development lifecycle, from ideation to deployment on app stores.
+                </span>
+                <span class="read-more-btn" id="readMoreBtnCompanyC" onclick="toggleReadMore('readMoreCompanyC', 'readMoreBtnCompanyC')">Read More</span>
+            </p>
+        </div>
     </section>
 
-    <!-- Projects Section with Expand/Collapse -->
+    <!-- Projects Section -->
     <section class="projects">
         <h2>Projects</h2>
-
         <div class="project">
-            <div class="project-title" onclick="toggleProjectContent('project1')">
-                Project 1: E-commerce Mobile App
-            </div>
+            <div class="project-title" onclick="toggleProjectContent('project1')">Project 1 - E-Commerce Mobile App</div>
             <div id="project1" class="project-content">
-                <p><strong>Description:</strong> Developed a cross-platform e-commerce app using React Native with integrated payment gateways and real-time order tracking.</p>
+                <p>Description: Developed a complete cross-platform mobile app for e-commerce using React Native. Integrated payment gateway and shipping APIs.</p>
                 <p><a href="https://github.com/yourusername/project1" target="_blank">GitHub Link</a> | <a href="https://play.google.com/store/apps/details?id=com.yourapp" target="_blank">Google Play Link</a></p>
             </div>
         </div>
-
         <div class="project">
-            <div class="project-title" onclick="toggleProjectContent('project2')">
-                Project 2: Health & Fitness Tracker
-            </div>
+            <div class="project-title" onclick="toggleProjectContent('project2')">Project 2 - Fitness Tracker App</div>
             <div id="project2" class="project-content">
-                <p><strong>Description:</strong> Built an iOS app using Swift to help users track their fitness goals with integrations to Apple HealthKit.</p>
-                <p><a href="https://github.com/yourusername/project2" target="_blank">GitHub Link</a></p>
+                <p>Description: Created a fitness tracking app for iOS with features like real-time tracking, health data integration, and personalized workout plans.</p>
+                <p><a href="https://github.com/yourusername/project2" target="_blank">GitHub Link</a> | <a href="https://apps.apple.com/us/app/yourapp/id123456789" target="_blank">App Store Link</a></p>
             </div>
         </div>
-
-        <div class="project">
-            <div class="project-title" onclick="toggleProjectContent('project3')">
-                Project 3: Social Media App
-            </div>
-            <div id="project3" class="project-content">
-                <p><strong>Description:</strong> Created an Android social media app in Kotlin with real-time chat, notifications, and media sharing.</p>
-                <p><a href="https://github.com/yourusername/project3" target="_blank">GitHub Link</a></p>
-            </div>
-        </div>
-
     </section>
 
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 by Mahesh Mori. Connect with me on <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></p>
+        <p>&copy; 2024 Mahesh Mori. All rights reserved.</p>
     </footer>
 
 </body>
